@@ -12,7 +12,7 @@ const DisplayScores = ({ data, setData }: Props) => {
   const createDeleteMe = useCreateDeleteMe(data, setData);
 
   return (
-    <div className='border border-black w-[90%] mx-auto my-4'>
+    <div className='border border-black  mx-auto my-4 '>
       {data.length ? (
         data.map((item, index) =>
           <ScoreBoard
@@ -23,7 +23,7 @@ const DisplayScores = ({ data, setData }: Props) => {
           />
         )
       ) : (
-        <p className='py-4 opacity-80'>まだ点数が保存されていません</p>
+        <p className='py-4 text-center'>まだ点数が保存されていません</p>
       )}
     </div>
   );

@@ -6,8 +6,9 @@ const useCalculate = (data: Data, setData: SetData) => {
 
     const sortData = () => {
         const _data = [...data];
-        const sortedData = _data.sort((item1, item2) => (item1.score <= item2.score) ? 1 : -1);
-        setData(sortedData);
+        const sortedData = _data.sort((item1, item2) => ((item1.score) > (item2.score)) ? 1 : -1);
+        const sortedData2 = sortedData.sort((item1, item2) => (item1.isRequired < item2.isRequired) ? 1 : -1);
+        setData(sortedData2);
     }
 
     const calculateScoreAndCredits = () => {
@@ -40,8 +41,6 @@ const useCalculate = (data: Data, setData: SetData) => {
                 }
             }
         });
-        console.log(`必修科目は${requiredCredits}単位、選択科目は${electiveCredits}単位`);
-        console.log(data);
         setSumPoint(sum);
     }
 

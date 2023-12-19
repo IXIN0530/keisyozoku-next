@@ -12,10 +12,10 @@ const ScoreBoard = ({ subjectAndPoint, deleteMe }: Props) => {
   const scoreColor = getScoreColor(score);
 
   return (
-    <div className="flex [&>*]:py-4 border-b border-black last:border-none">
-      <p className="flex-grow border-r border-black text-center" style={{ backgroundColor: backgroundColor }}>{subject}:</p>
-      <p className="w-[100px] border-r border-black text-center" style={{ backgroundColor: scoreColor }}>{score}</p>
-      <button className="w-[150px] bg-[#FF0000] text-white text-lg font-bold" onClick={deleteMe}>削除</button>
+    <div className=" group grid grid-cols-4 [&>p]:py-4 border-b border-black last:border-none ">
+      <p className=" border-r border-black  col-span-2  text-center" style={{ backgroundColor: backgroundColor }}>{subject}:</p>
+      <p className=" border-r border-black col-span-1 text-center" style={{ backgroundColor: scoreColor }}>{score}</p>
+      <button className="col-span-1 bg-[#FF0000] text-white text-lg font-bold" onClick={deleteMe}>削除</button>
     </div>
   );
 }
