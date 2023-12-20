@@ -23,10 +23,10 @@ const DisplayScores = ({ data, setData }: Props) => {
           />
         )
       ) : (
-        <p className='py-4 text-center'>まだ点数が保存されていません</p>
+        <p className='py-4 text-center bg-bg1'>まだ点数が保存されていません</p>
       )}
     </div>
   );
 }
 
-export default DisplayScores
+export default DisplayScores;
