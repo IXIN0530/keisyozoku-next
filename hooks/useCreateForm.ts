@@ -25,12 +25,13 @@ const useCreateForm = (data: Data, setData: SetData) => {
     }
 
     const changeSubjectCollectly = (r: boolean) => {
-
-        if (r != isRequired) {
+        if (r != isRequired && !isSelected) {
             setSubject(r ? "英語第一" : "化学実験第一(2)");
             setIsRequired(r);
         }
-
+        else if (r != isRequired && isSelected) {
+            setIsRequired(r);
+        }
     }
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -42,11 +43,14 @@ const useCreateForm = (data: Data, setData: SetData) => {
             data.forEach((item) => {
                 if (item.subject === subject) counter = false;
             });
-            if (counter) {
+            if (counter && subject) {
                 setData([...data, { isRequired, subject, score: _score }]);
             }
-            else {
+            else if (!counter) {
                 alert("すでにこの科目は登録されています。");
+            }
+            else {
+                alert("科目が選択されていないまたはその他のエラーが起きています。");
             }
 
         }
@@ -58,6 +62,8 @@ const useCreateForm = (data: Data, setData: SetData) => {
     const changeInputValue = (e: ChangeEvent<HTMLInputElement>) => {
         setInputValue(e.target.value);
     }
+    //検索機能ボタンが押されているか否か
+    const [isSelected, setIsSelected] = useState(0);
 
     useEffect(() => {
         let _expect = <string[]>[];
@@ -70,8 +76,10 @@ const useCreateForm = (data: Data, setData: SetData) => {
                 ? _expect.push(item) : false));
         }
         setUseExpect(_expect);
-        console.log(_expect);
-    }, [inputValue, isRequired]);
+        if (isSelected) {
+            setSubject(_expect[0]);
+        }
+    }, [inputValue, isRequired, isSelected]);
     return {
         isRequired,
         setIsRequired,
@@ -86,6 +94,8 @@ const useCreateForm = (data: Data, setData: SetData) => {
         changeSubjectCollectly,
         changeInputValue,
         useExpect,
+        isSelected,
+        setIsSelected,
     }
 }
 

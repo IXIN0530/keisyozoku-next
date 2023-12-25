@@ -22,9 +22,10 @@ const MakeSubject = ({ data, setData }: Props) => {
     changeSubjectCollectly,
     changeInputValue,
     useExpect,
+    isSelected,
+    setIsSelected,
   } = useCreateForm(data, setData);
 
-  const [isSelected, setIsSelected] = useState(0);
   const { electiveSubjects, requiredSubjects } = subjectdata();
 
   let selectedSubject = [""]
@@ -57,11 +58,12 @@ const MakeSubject = ({ data, setData }: Props) => {
             onClick={() => changeSubjectCollectly(true)}
             text="必修"
           />
+
           <button onClick={isSelected ? () => (setIsSelected(0)) : () => (setIsSelected(1))} className="flex bg-sky-400 p-1 rounded-xl duration-500 ease-out" style={isSelected ? { boxShadow: "none", backgroundColor: "#058eff" } : { boxShadow: "0 2px 2px gray" }}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
             </svg>
-            {isSelected ? <p>検索を解除</p> : <p>科目を検索</p>}
+            {isSelected ? <p>検索を止める</p> : <p>検索をする</p>}
           </button>
         </div>
         <select id="SelectBox" onChange={handleSubjectChange} className="block mx-auto border border-black">
