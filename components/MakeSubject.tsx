@@ -2,10 +2,7 @@
 import useCreateForm from "@/hooks/useCreateForm";
 import SubjectTypeSelectBtn from "./SubjectTypeSelectBtn";
 import { Data, SetData } from "@/types/data";
-import { useState } from "react";
-import { animate, motion } from "framer-motion";
 import subjectdata from "@/app/subjectdata";
-import { log } from "console";
 
 type Props = {
   data: Data;
