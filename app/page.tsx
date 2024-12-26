@@ -12,7 +12,7 @@ export default function Home() {
         initial={{ y: 70, opacity: 0 }}
         animate={{ y: [70, -10, 0], opacity: 1 }}
         exit={{ y: 70, opacity: 0 }}
-        transition={{ duration: 0.7 }}>系所属点数シュミレータ
+        transition={{ duration: 0.7 }}>系所属点シミュレーター
         <Logo />
       </motion.h1>
       <motion.p className=""
